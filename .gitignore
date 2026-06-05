@@ -1,0 +1,6 @@
+# Track worktrees live here (gitignored build/runtime state)
+.worktrees/
+
+# OS / editor noise
+.DS_Store
+*.swp

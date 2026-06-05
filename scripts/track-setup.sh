@@ -37,7 +37,7 @@ echo "  • worktree created at ${wt} (branch ${branch} off ${base})"
 
 # ── project-specific setup (optional) ────────────────────────────────────────
 # e.g. install deps so the worktree is verifiable in place:
-#   ( cd "$wt" && npm ci )            # or: bun install --frozen-lockfile
+#   ( cd "$wt" && npm ci )
 #   ( cd "$wt" && uv sync )           # or: pip install -e .
 # e.g. link a local env file the app needs:
 #   ln -sf "${repo_root}/.env" "${wt}/.env"

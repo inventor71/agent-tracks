@@ -19,7 +19,7 @@
 
 ## Verify
 <the exact command that proves this track works — /track-merge re-runs it after rebase.>
-<e.g. `pytest -q`  |  `bun test`  |  `make check && ./smoke.sh`>
+<e.g. `pytest -q`  |  `npm test`  |  `make check && ./smoke.sh`>
 
 ## Merge Risk Notes
 > Filled when flipping to `merge-awaiting`. /track-merge reads this to build the queue /

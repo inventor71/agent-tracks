@@ -36,7 +36,7 @@ Request: $ARGUMENTS
    yourself about to edit code on `main`, stop and create the worktree first.
 
 6. **Declare verification.** In `state.md` `## Verify`, write the exact command that proves
-   this track works (e.g. `pytest -q`, `bun test`, `make check`). `track-merge` re-runs it
+   this track works (e.g. `pytest -q`, `npm test`, `make check`). `track-merge` re-runs it
    after rebasing onto the latest main.
 
 7. **Proceed** with the work inside the worktree. Keep all progress in `.tracks/<id>/`.

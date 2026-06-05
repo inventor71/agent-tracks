@@ -70,7 +70,7 @@ This repo uses agent-tracks for concurrent work. Load and obey
 ## Workflow
 
 ```
-/track-new  "add short-selling support"      # creates t1: worktree + branch + docs + registry row
+/track-new  "add user authentication"          # creates t1: worktree + branch + docs + registry row
    … agent works inside .worktrees/t1, keeps progress in .tracks/t1/ …
    … when its Verify command passes, it sets state.md Status: merge-awaiting …
 

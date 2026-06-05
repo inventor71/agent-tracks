@@ -120,15 +120,15 @@ For each track `T` (worktree `W`, branch `feat/T`), in order:
   2. Confirm each is actually defined/imported in the merged result.
   3. Watch especially: if the previous track (main side) refactored this file (rename,
      signature change, split), check the rebased track's code was **adjusted to the new API**.
-     e.g. main renamed `pinnedDate()`→`pinnedStart()`; if the rebased track's `isToday()`
-     still calls `pinnedDate()`, rewrite it.
+     e.g. main renamed `getUserName()`→`getFullDisplayName()`; if the rebased track's
+     `formatGreeting()` still calls `getUserName()`, rewrite it.
   4. If any identifier fails, fix in the file and re-check. **Never assume "git removed the
      conflict markers so it's fine."** git merges text; it does not verify logic.
 
 ### 2) Re-run verify (analyze + fix on failure)
 - In W, actually re-run the track's verification (rebase may have changed code, so this is
   required). The command is the track's `state.md` `## Verify` line (e.g. `pytest -q`,
-  `bun test`, a build + smoke). Run it in W.
+  `npm test`, a build + smoke). Run it in W.
 - **On failure**: analyze. If it's a **cross-integration break** caused by the previous merge
   (stale reference / missed rename) → fix in W, fixup commit, re-verify. If it's a real
   regression in the track's own logic → **STOP**, report.

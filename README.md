@@ -51,7 +51,9 @@ This repo is a **drop-in for Claude Code**. Copy the pieces into your project
 your-repo/
 ├── .claude/
 │   ├── commands/   ← copy commands/*.md  (slash commands: /track-new, /track-merge, …)
-│   └── agents/     ← copy agents/*.md     (the critic subagent)
+│   ├── agents/     ← copy agents/*.md     (the critic subagent)
+│   └── hooks/      ← copy hooks/*.py      (PreToolUse guard: blocks main-tree code edits
+│                                           while a track is active)
 ├── .tracks/        ← copy .tracks/ (registry.md, log.md, _template/)
 ├── scripts/
 │   └── track-setup.sh  ← copy (worktree bootstrap)
@@ -66,6 +68,10 @@ Then point your project's `CLAUDE.md` at the rules so every session obeys them:
 This repo uses agent-tracks for concurrent work. Load and obey
 `rules/concurrent-tracks.md`. Never generate code outside a track worktree.
 ```
+
+The guard hook (`guard-main-edits.py`) enforces the worktree gate at the tool level —
+it blocks `Edit`/`Write` calls to application code on `main` whenever the Track Registry
+has an active track. Set `TRACKS_ALLOW_MAIN_EDIT=1` to bypass for intentional main hotfixes.
 
 ## Workflow
 
@@ -113,6 +119,11 @@ A single runner serializes the one genuinely-shared step. It's the difference be
 Extracted from a per-track customization of [AWS AI-DLC](https://github.com/awslabs/ai-driven-dev-lifecycle),
 generalized to be framework-agnostic. The track lifecycle here is deliberately thin — bring
 your own planning/design process on top; agent-tracks only owns **isolation + recombination**.
+
+For the full AI-DLC workflow rules reworked around the concurrent-track philosophy (the
+original customization this was extracted from), see
+[aidlc-workflows-concurrent](https://github.com/inventor71/aidlc-workflows-concurrent) —
+every phase from workspace detection through build-and-test made track-aware.
 
 ## License
 

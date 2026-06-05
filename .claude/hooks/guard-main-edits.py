@@ -3,7 +3,7 @@
 track is active.
 
 Rationale: agent-tracks mandates a blocking "worktree gate" — no application code
-may be generated outside a worktree. That rule lives in rules/concurrent-tracks.md
+may be generated outside a worktree. That rule lives in .tracks/rules.md
 as prose and depends on the model's discipline, so edits can leak into main. This
 hook makes the gate a hard, structural constraint.
 
@@ -100,7 +100,7 @@ def main() -> int:
         return 0  # no track in flight → allow
 
     sys.stderr.write(
-        "BLOCKED by worktree gate (rules/concurrent-tracks.md): refusing to edit "
+        "BLOCKED by worktree gate (.tracks/rules.md): refusing to edit "
         f"main-checkout application code while a track is active.\n"
         f"  target: {rel}\n"
         "Do the work in the track's worktree (.worktrees/<id>/) instead — "

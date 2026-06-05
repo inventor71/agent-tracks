@@ -77,7 +77,7 @@ A single table is the authority for which tracks exist and where they live:
 
 **No application code is generated outside a worktree.** Treat it as a hard rule:
 if you're about to edit code while checked out on `main`, stop — create the track's
-worktree first (`track-setup.sh <id>` or `git worktree add .worktrees/<id> -b feat/<id>`).
+worktree first (`git worktree add .worktrees/<id> -b feat/<id>`).
 Docs (`.tracks/<id>/`) may be authored before the worktree exists; code may not.
 
 ## Track lifecycle

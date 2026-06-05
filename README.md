@@ -43,30 +43,39 @@ Because every track re-bases onto the *latest* main and re-verifies, a tangle su
 
 ## Quick start
 
-This repo is a **drop-in for Claude Code**. Copy the pieces into your project
-(`.tracks/` ships as an initial template — real data is populated on your first
-`/track-new` and `/track-merge`):
+This repo **is** a drop-in for Claude Code. Clone and run the install script to copy
+`.claude/` and `.tracks/` into your project:
+
+```
+git clone https://github.com/<you>/agent-tracks.git
+cd agent-tracks
+./install.sh /path/to/your-project
+```
+
+Or copy by hand — the structure mirrors the target directly:
 
 ```
 your-repo/
 ├── .claude/
-│   ├── commands/   ← copy commands/*.md  (slash commands: /track-new, /track-merge, …)
-│   ├── agents/     ← copy agents/*.md     (the critic subagent)
-│   └── hooks/      ← copy hooks/*.py      (PreToolUse guard: blocks main-tree code edits
-│                                           while a track is active)
-├── .tracks/        ← copy .tracks/ (registry.md, log.md, _template/)
-├── scripts/
-│   └── track-setup.sh  ← copy (worktree bootstrap)
-└── rules/
-    └── concurrent-tracks.md  ← copy (the rules every command loads)
+│   ├── commands/   ← track-new.md, track-merge.md, track-status.md, track-resume.md, critic.md
+│   ├── agents/     ← critic.md (adversarial reviewer subagent)
+│   └── hooks/      ← guard-main-edits.py (blocks main-tree code edits while a track is active)
+└── .tracks/
+    ├── rules.md    ← the discipline every command loads
+    ├── registry.md ← thin index of all tracks
+    ├── log.md      ← global timeline (merge-time appends only)
+    └── _template/  ← state.md + audit.md (copied to start each track)
 ```
+
+`.tracks/` ships as a template — real data is populated on your first `/track-new` and
+`/track-merge`.
 
 Then point your project's `CLAUDE.md` at the rules so every session obeys them:
 
 ```markdown
 ## Parallel work
 This repo uses agent-tracks for concurrent work. Load and obey
-`rules/concurrent-tracks.md`. Never generate code outside a track worktree.
+`.tracks/rules.md`. Never generate code outside a track worktree.
 ```
 
 The guard hook (`guard-main-edits.py`) enforces the worktree gate at the tool level —

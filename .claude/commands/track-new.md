@@ -7,7 +7,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git worktree add:*), Bash(git
 # /track-new — start a parallel track
 
 Create an isolated track for a new piece of work so it can run alongside other tracks
-without colliding. Load and obey `rules/concurrent-tracks.md`.
+without colliding. Load and obey `.tracks/rules.md`.
 
 Request: $ARGUMENTS
 
@@ -31,7 +31,7 @@ Request: $ARGUMENTS
    `git pull --rebase` first if the repo has a remote, then add the row.
 
 5. **Worktree gate.** Create the worktree **before** generating any code:
-   `git worktree add .worktrees/<id> -b feat/<id>` (or `scripts/track-setup.sh <id>`).
+   `git worktree add .worktrees/<id> -b feat/<id>`.
    Design/planning docs may be authored before this; **code may not**. If you ever find
    yourself about to edit code on `main`, stop and create the worktree first.
 

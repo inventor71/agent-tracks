@@ -14,7 +14,7 @@ ask which to resume first.)
 
 ## Steps
 
-1. **Load the rules.** `rules/concurrent-tracks.md`.
+1. **Load the rules.** `.tracks/rules.md`.
 2. **Select the track + reconstruct position.** Read:
    - `.tracks/registry.md` — the track's branch/worktree.
    - `.tracks/<id>/state.md` — done/skipped/in-progress, the `## Verify` command, scope.

@@ -2,7 +2,7 @@
 
 > Per-track state. **Single writer = this track's worktree session.** Never edit another
 > track's state; don't put this detail in `.tracks/registry.md` (registry = thin index only).
-> See `rules/concurrent-tracks.md`.
+> See `.tracks/rules.md`.
 
 ## Track Info
 - **ID**: <id>

@@ -43,7 +43,9 @@ Because every track re-bases onto the *latest* main and re-verifies, a tangle su
 
 ## Quick start
 
-This repo is a **drop-in for Claude Code**. Copy the pieces into your project:
+This repo is a **drop-in for Claude Code**. Copy the pieces into your project
+(`.tracks/` ships as an initial template — real data is populated on your first
+`/track-new` and `/track-merge`):
 
 ```
 your-repo/
